@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-
+import bg from "../../public/Images/image.webp"
+import Image from 'next/image'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -16,7 +17,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="w-full h-screen relative ">
+          <Image
+            src={bg}
+            alt="Background Image"
+            layout="fill"
+            objectFit="cover"
+          />
+          {children}
+        </div>
+
+
+      </body>
     </html>
   )
 }

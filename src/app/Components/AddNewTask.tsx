@@ -18,9 +18,9 @@ const AddTask: React.FC = () => {
     };
 
     // Function to handle adding a new task
-
     const handleAddTask = async () => {
         if (!newTask.trim()) {
+            // To check if the new task input is empty
             toast("Please enter a task", { type: "error" });
             return;
         }
@@ -28,7 +28,7 @@ const AddTask: React.FC = () => {
         try {
             const res = await postTask(newTask);
             const { task } = res.data;
-            setTasks([...tasks, task]);
+            setTasks([...tasks, task]); // Adds new task to the list of tasks
             toast("Task added successfully", { type: "success" });
             setNewTask("");
         } catch (err) {
@@ -38,7 +38,7 @@ const AddTask: React.FC = () => {
     };
 
     return (
-        <div className='flex mb-4 w-full p-2 rounded bg-white text-black absolute'>
+        <div className='flex mb-4 w-full p-2 rounded bg-white text-black '>
             <input
                 type='text'
                 placeholder='Enter a new task'

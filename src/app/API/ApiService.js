@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8800/api",
+  // baseURL: "http://localhost:8800/api",
+  baseURL: "https://skill-assessment-be.vercel.app/api"
 });
 
 export const getTasks = async () => await api.get("/todo");

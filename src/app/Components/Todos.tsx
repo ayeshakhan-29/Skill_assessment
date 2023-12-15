@@ -8,8 +8,8 @@ import moment from "moment";
 
 
 const Todos = ({ task, handleUpdateTask, handleDeleteTask }) => {
-    // const [tasks, setTasks] = useState < Task[] > ([]);
     const [showInfo, setShowInfo] = useState(false);
+    const formattedCreatedAt = moment(task.createdAt).format('YYYY-MM-DD hh:mm A');
 
     const toggleInfo = () => {
         setShowInfo(!showInfo);
@@ -17,7 +17,7 @@ const Todos = ({ task, handleUpdateTask, handleDeleteTask }) => {
     return (
         <div>
             <div
-                key={task._id}
+
                 className=" rounded w-full bg-white p-4 shadow text-black cursor-pointer"
             >
                 <div className="flex justify-between items-center ">
@@ -27,7 +27,6 @@ const Todos = ({ task, handleUpdateTask, handleDeleteTask }) => {
                             alt="check Icon"
                             className="w-6 h-6"
                             onClick={() => handleUpdateTask(task._id)}
-
                         />
                         <span className="ml-3">{task.title}</span>
                     </div>
@@ -41,8 +40,9 @@ const Todos = ({ task, handleUpdateTask, handleDeleteTask }) => {
                             Completed: {task?.isComplete ? "Completed" : "Not Completed"}{" "}
                         </span>
                         <span>
-                            Created At: {moment(task.timeStamp).format("YYYY-MM-DD hh:mm A")}
+                            Created At: {formattedCreatedAt}
                         </span>
+
                         <button
                             onClick={() => handleDeleteTask(task._id)}
                             className='bg-red-100 rounded w-full mt-4 hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 transition duration-300 ease-in-out'

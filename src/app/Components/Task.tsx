@@ -2,13 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from "react-toastify";
 import { getTasks, updateTask, deleteTask } from '../API/ApiService';
-import checked from '../../../public/icons/checklist.png';
-import checkedGreen from '../../../public/icons/checkedGreen.png';
-import DotIcon from '../../../public/icons/DotIcon';
-import Image from 'next/image';
 import moment from "moment";
 import Todos from "./Todos";
-
 
 interface Task {
     _id: string;
@@ -23,12 +18,6 @@ interface Task {
 
 const TaskComponent: React.FC = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
-    // const [showInfo, setShowInfo] = useState(false);
-
-
-    // const toggleInfo = () => {
-    //     setShowInfo(!showInfo);
-    // };
 
     useEffect(() => {
         const fetchTasks = async () => {
@@ -78,15 +67,16 @@ const TaskComponent: React.FC = () => {
         }
     };
 
-
     return (
         <div className="w-full">
             <div className="bg-white opacity-90 mt-2 overflow-y-scroll w-full h-64 bg-opacity-70 rounded">
                 {tasks.length > 0 ? (
                     tasks.map((task) => (
-                        <Todos task={task}
-                            handleDeleteTask={handleDeleteTask}
-                            handleUpdateTask={handleUpdateTask} />
+                        <div key={task._id}>
+                            <Todos task={task}
+                                handleDeleteTask={handleDeleteTask}
+                                handleUpdateTask={handleUpdateTask} />
+                        </div>
                     ))
                 ) : (
                     <div className="rounded bg-white p-4 shadow">No tasks available</div>

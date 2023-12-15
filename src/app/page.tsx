@@ -14,6 +14,7 @@ export default function Home() {
     <>
 
       <div className='flex  items-center justify-center h-screen w-screen'>
+        <ToastContainer />
         <div className='absolute gap-y-3 w-4/5 md:w-3/5 lg:w-2/5 flex flex-col items-center justify-around'>
           <Profile />
           <AddTask />

@@ -20,8 +20,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="w-full h-screen relative ">
           <Image
-            src={bg}
             alt="Background Image"
+            src={bg}
             layout="fill"
             objectFit="cover"
           />

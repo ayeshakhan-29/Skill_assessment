@@ -6,8 +6,20 @@ import DotIcon from '../../../public/icons/DotIcon';
 import Image from 'next/image';
 import moment from "moment";
 
+interface TodoProps {
+    task: {
+        _id: string;
+        title: string;
+        isComplete: boolean;
+        createdAt: string;
+        // Add other properties as per your task structure
+    };
+    handleUpdateTask: (id: string) => void;
+    handleDeleteTask: (id: string) => void;
+}
 
-const Todos = ({ task, handleUpdateTask, handleDeleteTask }) => {
+
+const Todos: React.FC<TodoProps> = ({ task, handleUpdateTask, handleDeleteTask }) => {
     const [showInfo, setShowInfo] = useState(false);
     const formattedCreatedAt = moment(task.createdAt).format('YYYY-MM-DD hh:mm A');
 
@@ -17,7 +29,6 @@ const Todos = ({ task, handleUpdateTask, handleDeleteTask }) => {
     return (
         <div>
             <div
-
                 className=" rounded w-full bg-white p-4 shadow text-black cursor-pointer"
             >
                 <div className="flex justify-between items-center ">
